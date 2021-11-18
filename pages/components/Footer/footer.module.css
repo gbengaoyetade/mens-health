@@ -2,7 +2,6 @@
   background: #e8efe9;
   max-width: 1680px;
   width: 100vw;
-  margin: 0 auto;
   padding: 3rem 8rem 1rem 8rem;
 }
 
@@ -44,6 +43,19 @@
 
 .social {
   flex-basis: 120px;
+}
+
+.social a {
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
+.social a:hover {
+  border: 1px solid #0b3b3c;
+  transition: border 0.3s;
 }
 
 /* Mobile styles */
