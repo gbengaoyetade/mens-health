@@ -45,3 +45,33 @@
 .social {
   flex-basis: 120px;
 }
+
+/* Mobile styles */
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 78%;
+  }
+
+  .items-wrapper {
+    flex-direction: column;
+  }
+
+  .symbol-wrapper {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 812px) and (orientation: landscape) {
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+  }
+}

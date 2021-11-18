@@ -4,12 +4,12 @@ import style from './footer.module.css';
 const Footer = () => {
   return (
     <footer className={style.footer}>
-      <div className={style['space-between']}>
-        <div>
+      <div className={`${style['space-between']} ${style['items-wrapper']} `}>
+        <div className={style['symbol-wrapper']}>
           <Image src='/images/symbol.svg' width='50px' height='50px' />
         </div>
 
-        <nav className={`${style.nav} ${style['space-between']}`}>
+        <nav className={`${style['space-between']} ${style.nav} `}>
           <div className={style['nav-section']}>
             <p className={style.title}>PRODUCT</p>
             <a href='#'>Popular</a>
@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
           <div className={`${style['nav-section']} ${style.social}`}>
             <p className={style.title}>FOLLOW US</p>
-            <div className={`${style['space-between']} `}>
+            <div className={`${style['space-between']}`}>
               <a href='#'>
                 <Image src='/images/facebook.svg' width='18px' height='18px' />
               </a>
