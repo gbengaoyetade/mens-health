@@ -33,7 +33,7 @@ const Quiz = ({ setShowQuiz }) => {
     }
   };
 
-  const handleBackButton = () => {
+  const handleBackButtonClick = () => {
     if (questionIndex > 0) {
       setQuestionIndex(questionIndex - 1);
     }
@@ -54,7 +54,7 @@ const Quiz = ({ setShowQuiz }) => {
     <div className={style.wrapper}>
       <section className={style['questions-wrapper']}>
         {questionIndex > 0 && (
-          <button onClick={handleBackButton} className={style.btn}>
+          <button onClick={handleBackButtonClick} className={style.btn}>
             &larr;
           </button>
         )}

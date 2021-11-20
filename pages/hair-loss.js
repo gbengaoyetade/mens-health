@@ -6,6 +6,7 @@ const HairLoss = () => {
     <>
       <Head>
         <title>Hair loss</title>
+        <link rel='icon' href='/images/favicon.ico' />
       </Head>
       <HairLossPage />
     </>

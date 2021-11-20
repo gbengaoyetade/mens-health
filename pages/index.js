@@ -6,7 +6,7 @@ export default function Home() {
       <Head>
         <title>Mens Health</title>
         <meta name='description' content='Something about hair loss' />
-        <link rel='icon' href='/images/favicon.ico' />
+        
       </Head>
       <main></main>
     </div>
