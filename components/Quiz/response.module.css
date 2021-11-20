@@ -1,0 +1,31 @@
+.response-wrapper {
+  width: 90vw;
+  max-width: 500px;
+  padding: 1rem;
+  border: 1px solid #e8efe9;
+  margin: auto;
+  color: #0b3b3c;
+  box-shadow: 1px 1px 15px #e8efe9;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.response-wrapper a {
+  color: #6d8a83;
+  font-weight: 700;
+}
+
+.response-wrapper a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  background: #7e0707;
+  padding: 8px 12px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  align-self: flex-end;
+}

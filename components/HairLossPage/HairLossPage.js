@@ -1,11 +1,23 @@
+import { useState } from 'react';
 import style from './hairlosspage.module.css';
 import Image from 'next/image';
 import Footer from '../Footer';
+import Quiz from '../Quiz';
 
 const HairLossPage = () => {
+  const [showQuiz, setShowQuiz] = useState(false);
+
+  const handleTakeQuiz = () => {
+    setShowQuiz(true);
+  };
+
+  if (showQuiz) {
+    return <Quiz showQuiz={showQuiz} setShowQuiz={setShowQuiz} />;
+  }
+
   return (
-    <>
-      <main className={style.main}>
+    <div className={style.main}>
+      <main>
         <section className={style['hero-section']}>
           <div>
             <Image src='/images/symbol.svg' width='40px' height='38px' />
@@ -17,7 +29,9 @@ const HairLossPage = () => {
               We’re working around the clock to bring you a holistic approach to
               your wellness. From top to bottom, inside and out.
             </p>
-            <button className={style.btn}>TAKE THE QUIZ</button>
+            <button onClick={handleTakeQuiz} className={style.btn}>
+              TAKE THE QUIZ
+            </button>
           </div>
         </section>
 
@@ -62,7 +76,7 @@ const HairLossPage = () => {
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
