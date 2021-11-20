@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import HairLossPage from './components/HairLossPage';
+import HairLossPage from '../components/HairLossPage';
 
 const HairLoss = () => {
   return (
