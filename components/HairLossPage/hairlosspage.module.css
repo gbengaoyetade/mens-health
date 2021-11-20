@@ -114,7 +114,7 @@
   color: #f3f7f4;
   z-index: 0;
   left: -230px;
-  z-index: 0;
+  margin: 0;
 }
 
 .bg-text-reverse {
