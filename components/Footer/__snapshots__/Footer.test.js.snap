@@ -25,6 +25,7 @@ exports[`Footer should should match snapshots 1`] = `
             />
           </span>
           <img
+            alt="app logo"
             data-nimg="intrinsic"
             decoding="async"
             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -146,6 +147,7 @@ exports[`Footer should should match snapshots 1`] = `
                   />
                 </span>
                 <img
+                  alt="facebook logo"
                   data-nimg="intrinsic"
                   decoding="async"
                   src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -171,6 +173,7 @@ exports[`Footer should should match snapshots 1`] = `
                   />
                 </span>
                 <img
+                  alt="google logo"
                   data-nimg="intrinsic"
                   decoding="async"
                   src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -196,6 +199,7 @@ exports[`Footer should should match snapshots 1`] = `
                   />
                 </span>
                 <img
+                  alt="twitter logo"
                   data-nimg="intrinsic"
                   decoding="async"
                   src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
