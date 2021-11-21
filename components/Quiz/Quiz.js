@@ -21,7 +21,7 @@ const Quiz = ({ setShowQuiz }) => {
 
   useEffect(() => {
     setAnimate(true);
-  }, [questionIndex]);
+  }, [questionIndex, questions.length]);
 
   const handleOptionSelect = (value, isRejection) => {
     setAnimate(false);
