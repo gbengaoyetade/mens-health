@@ -71,7 +71,11 @@ const Quiz = ({ setShowQuiz }) => {
       >
         <section className={style['questions-wrapper']}>
           {questionIndex > 0 && (
-            <button onClick={handleBackButtonClick} className={style.btn}>
+            <button
+              data-testid='back-btn'
+              onClick={handleBackButtonClick}
+              className={style.btn}
+            >
               &larr;
             </button>
           )}
@@ -89,6 +93,7 @@ const Quiz = ({ setShowQuiz }) => {
                     className={getOptionClass(value)}
                     onClick={() => handleOptionSelect(value, isRejection)}
                     key={index}
+                    data-testid={`${questionIndex}_option_${index}`}
                   ></div>
                 );
               }
