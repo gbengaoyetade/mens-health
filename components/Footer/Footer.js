@@ -6,7 +6,12 @@ const Footer = () => {
     <footer className={style.footer}>
       <div className={`${style['space-between']} ${style['items-wrapper']} `}>
         <div className={style['symbol-wrapper']}>
-          <Image src='/images/symbol.svg' width='50px' height='50px' />
+          <Image
+            alt='app logo'
+            src='/images/symbol.svg'
+            width='50px'
+            height='50px'
+          />
         </div>
 
         <nav className={`${style['space-between']} ${style.nav} `}>
@@ -34,13 +39,28 @@ const Footer = () => {
             <p className={style.title}>FOLLOW US</p>
             <div className={`${style['space-between']}`}>
               <a href='#'>
-                <Image src='/images/facebook.svg' width='18px' height='18px' />
+                <Image
+                  alt='facebook logo'
+                  src='/images/facebook.svg'
+                  width='18px'
+                  height='18px'
+                />
               </a>
               <a href='#'>
-                <Image src='/images/google.svg' width='18px' height='18px' />
+                <Image
+                  alt='google logo'
+                  src='/images/google.svg'
+                  width='18px'
+                  height='18px'
+                />
               </a>
               <a href='#'>
-                <Image src='/images/twitter.svg' width='18px' height='18px' />
+                <Image
+                  alt='twitter logo'
+                  src='/images/twitter.svg'
+                  width='18px'
+                  height='18px'
+                />
               </a>
             </div>
           </div>

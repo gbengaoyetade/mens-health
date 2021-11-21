@@ -20,7 +20,12 @@ const HairLossPage = () => {
       <main>
         <section className={style['hero-section']}>
           <div>
-            <Image src='/images/symbol.svg' width='40px' height='38px' />
+            <Image
+              alt='app logo'
+              src='/images/symbol.svg'
+              width='40px'
+              height='38px'
+            />
           </div>
 
           <div className={style['head-text']}>
@@ -40,7 +45,12 @@ const HairLossPage = () => {
 
           <div className={style['help-item']}>
             <div className={style['help-item-image']}>
-              <Image src='/images/person1.png' width='370px' height='445px' />
+              <Image
+                alt='person with hair loss'
+                src='/images/person1.png'
+                width='370px'
+                height='445px'
+              />
             </div>
             <div className={style['help-item-text']}>
               <p className={style['help-item-title']}>Hair loss</p>
@@ -57,7 +67,12 @@ const HairLossPage = () => {
             <div
               className={`${style['help-item-image']} ${style['image-reverse']}`}
             >
-              <Image src='/images/person2.png' width='370px' height='445px' />
+              <Image
+                alt='an image showing a person'
+                src='/images/person2.png'
+                width='370px'
+                height='445px'
+              />
             </div>
             <div className={style['help-item-text']}>
               <p className={style['help-item-title']}>Erecetile dysfunction</p>

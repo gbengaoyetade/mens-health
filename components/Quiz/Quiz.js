@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import DOMPurify from 'dompurify';
+import { CSSTransition } from 'react-transition-group';
 
 import style from './quiz.module.css';
 import Response from './Response';
@@ -9,19 +10,21 @@ const Quiz = ({ setShowQuiz }) => {
   const questions = getQuestions();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [hasRejection, setHasRejection] = useState(null);
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     if (Object.keys(answers).length === questions.length) {
-      const hasRejection = Object.values(answers).some(
-        ({ isRejection }) => isRejection === true
-      );
-
-      setHasRejection(hasRejection);
+      setQuizCompleted(true);
     }
   }, [answers]);
 
+  useEffect(() => {
+    setAnimate(true);
+  }, [questionIndex, questions.length]);
+
   const handleOptionSelect = (value, isRejection) => {
+    setAnimate(false);
     const newAnswers = { ...answers, [questionIndex]: { value, isRejection } };
     setAnswers(newAnswers);
     setNextQuestion();
@@ -34,6 +37,7 @@ const Quiz = ({ setShowQuiz }) => {
   };
 
   const handleBackButtonClick = () => {
+    setAnimate(false);
     if (questionIndex > 0) {
       setQuestionIndex(questionIndex - 1);
     }
@@ -46,38 +50,57 @@ const Quiz = ({ setShowQuiz }) => {
     return style.option;
   };
 
-  if (hasRejection !== null) {
-    return <Response hasRejection={hasRejection} setShowQuiz={setShowQuiz} />;
+  if (quizCompleted) {
+    return (
+      <Response
+        quizCompleted={quizCompleted}
+        setShowQuiz={setShowQuiz}
+        answers={answers}
+      />
+    );
   }
 
   return (
     <div className={style.wrapper}>
-      <section className={style['questions-wrapper']}>
-        {questionIndex > 0 && (
-          <button onClick={handleBackButtonClick} className={style.btn}>
-            &larr;
-          </button>
-        )}
-
-        <p className={style.question}>{questions[questionIndex].question}</p>
-        <div className={style['options-wrapper']}>
-          {questions[questionIndex].options.map(
-            ({ display, value, isRejection }, index) => {
-              const purified = DOMPurify.sanitize(display);
-              return (
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: purified,
-                  }}
-                  className={getOptionClass(value)}
-                  onClick={() => handleOptionSelect(value, isRejection)}
-                  key={index}
-                ></div>
-              );
-            }
+      <CSSTransition
+        in={animate}
+        timeout={500}
+        classNames='animate'
+        unmountOnExit
+        key={questionIndex}
+      >
+        <section className={style['questions-wrapper']}>
+          {questionIndex > 0 && (
+            <button
+              data-testid='back-btn'
+              onClick={handleBackButtonClick}
+              className={style.btn}
+            >
+              &larr;
+            </button>
           )}
-        </div>
-      </section>
+
+          <p className={style.question}>{questions[questionIndex].question}</p>
+          <div className={style['options-wrapper']}>
+            {questions[questionIndex].options.map(
+              ({ display, value, isRejection }, index) => {
+                const purified = DOMPurify.sanitize(display);
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: purified,
+                    }}
+                    className={getOptionClass(value)}
+                    onClick={() => handleOptionSelect(value, isRejection)}
+                    key={index}
+                    data-testid={`${questionIndex}_option_${index}`}
+                  ></div>
+                );
+              }
+            )}
+          </div>
+        </section>
+      </CSSTransition>
     </div>
   );
 };
