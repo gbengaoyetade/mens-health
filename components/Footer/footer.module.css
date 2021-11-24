@@ -1,6 +1,9 @@
 .footer {
   background: #e8efe9;
   padding: 3rem 8rem 1rem 8rem;
+  max-width: 1680px;
+  width: 100vw;
+  margin: 0 auto;
 }
 
 .copy {

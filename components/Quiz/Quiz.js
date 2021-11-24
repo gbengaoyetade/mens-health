@@ -4,10 +4,8 @@ import { CSSTransition } from 'react-transition-group';
 
 import style from './quiz.module.css';
 import Response from './Response';
-import { getQuestions } from '../../helpers/questions';
 
-const Quiz = ({ setShowQuiz }) => {
-  const questions = getQuestions();
+const Quiz = ({ setShowQuiz, questions }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [quizCompleted, setQuizCompleted] = useState(false);

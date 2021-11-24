@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import style from './hairlosspage.module.css';
 import Image from 'next/image';
-import Footer from '../Footer';
 import Quiz from '../Quiz';
 
-const HairLossPage = () => {
+const HairLossPage = ({ questions }) => {
   const [showQuiz, setShowQuiz] = useState(false);
 
   const handleTakeQuiz = () => {
@@ -12,7 +11,13 @@ const HairLossPage = () => {
   };
 
   if (showQuiz) {
-    return <Quiz showQuiz={showQuiz} setShowQuiz={setShowQuiz} />;
+    return (
+      <Quiz
+        showQuiz={showQuiz}
+        setShowQuiz={setShowQuiz}
+        questions={questions}
+      />
+    );
   }
 
   return (
@@ -90,7 +95,6 @@ const HairLossPage = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };
