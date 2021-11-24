@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import style from './footer.module.css';
+import styles from './footer.module.css';
 
 const Footer = () => {
   return (
-    <footer className={style.footer}>
-      <div className={`${style['space-between']} ${style['items-wrapper']} `}>
-        <div className={style['symbol-wrapper']}>
+    <footer className={styles.footer}>
+      <div className={`${styles['space-between']} ${styles['items-wrapper']} `}>
+        <div className={styles['symbol-wrapper']}>
           <Image
             alt='app logo'
             src='/images/symbol.svg'
@@ -14,30 +14,30 @@ const Footer = () => {
           />
         </div>
 
-        <nav className={`${style['space-between']} ${style.nav} `}>
-          <div className={style['nav-section']}>
-            <p className={style.title}>PRODUCT</p>
+        <nav className={`${styles['space-between']} ${styles.nav} `}>
+          <div className={styles['nav-section']}>
+            <p className={styles.title}>PRODUCT</p>
             <a href='#'>Popular</a>
             <a href='#'>Trending</a>
             <a href='#'>Guided</a>
             <a href='#'>Products</a>
           </div>
-          <div className={style['nav-section']}>
-            <p className={style.title}>COMPANY</p>
+          <div className={styles['nav-section']}>
+            <p className={styles.title}>COMPANY</p>
             <a href='#'>Press</a>
             <a href='#'>Mission</a>
             <a href='#'>Strategy</a>
             <a href='#'>About</a>
           </div>
-          <div className={style['nav-section']}>
-            <p className={style.title}>INFO</p>
+          <div className={styles['nav-section']}>
+            <p className={styles.title}>INFO</p>
             <a href='#'>Support</a>
             <a href='#'>Customer Service</a>
             <a href='#'>Get Started</a>
           </div>
-          <div className={`${style['nav-section']} ${style.social}`}>
-            <p className={style.title}>FOLLOW US</p>
-            <div className={`${style['space-between']}`}>
+          <div className={`${styles['nav-section']} ${styles.social}`}>
+            <p className={styles.title}>FOLLOW US</p>
+            <div className={`${styles['space-between']}`}>
               <a href='#'>
                 <Image
                   alt='facebook logo'
@@ -67,7 +67,7 @@ const Footer = () => {
         </nav>
       </div>
 
-      <p className={style.copy}>&copy; 2021 Manual. All rights reserverd</p>
+      <p className={styles.copy}>&copy; 2021 Manual. All rights reserverd</p>
     </footer>
   );
 };
