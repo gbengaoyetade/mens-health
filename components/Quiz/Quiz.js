@@ -42,8 +42,11 @@ const Quiz = ({ setShowQuiz, questions }) => {
     return styles.option;
   };
 
-  if (answers.length === questions.length) {
-    return <Response setShowQuiz={setShowQuiz} answers={answers} />;
+  const hasRejection = answers.length && answers[questionIndex - 1].isRejection;
+  const hasCompletedQuestion = answers.length === questions.length;
+
+  if (hasRejection || hasCompletedQuestion) {
+    return <Response setShowQuiz={setShowQuiz} hasRejection={hasRejection} />;
   }
 
   return (

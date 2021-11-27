@@ -9,4 +9,7 @@ module.exports = {
       },
     ];
   },
+  env: {
+    QUIZ_URL: process.env.NEXT_PUBLIC_QUIZ_URL,
+  },
 };

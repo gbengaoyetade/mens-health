@@ -14,11 +14,10 @@ const HairLoss = ({ questions }) => {
 };
 
 export async function getStaticProps() {
-  let questionz = await fetch(
-    'https://manual-case-study.herokuapp.com/questionnaires/972423.json'
-  );
+  console.log(process.env.QUIZ_URL);
+  let response = await fetch(process.env.QUIZ_URL);
 
-  const jsonResponse = await questionz.json();
+  const jsonResponse = await response.json();
 
   return { props: jsonResponse };
 }

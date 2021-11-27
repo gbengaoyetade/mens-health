@@ -3,16 +3,12 @@ import style from './response.module.css';
 import quizStyle from './quiz.module.css';
 import { CSSTransition } from 'react-transition-group';
 
-const Response = ({ setShowQuiz, answers }) => {
+const Response = ({ setShowQuiz, hasRejection }) => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     setAnimate(true);
   }, []);
-
-  const hasRejection = Object.values(answers).some(
-    ({ isRejection }) => isRejection === true
-  );
 
   return (
     <CSSTransition
