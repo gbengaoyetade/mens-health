@@ -42,7 +42,8 @@ const Quiz = ({ setShowQuiz, questions }) => {
     return styles.option;
   };
 
-  const hasRejection = answers.length && answers[questionIndex - 1].isRejection;
+  const hasRejection =
+    answers.length && answers[questionIndex - 1]?.isRejection;
   const hasCompletedQuestion = answers.length === questions.length;
 
   if (hasRejection || hasCompletedQuestion) {
