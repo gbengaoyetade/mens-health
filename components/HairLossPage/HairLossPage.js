@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import style from './hairlosspage.module.css';
+import styles from './hairlosspage.module.css';
 import Image from 'next/image';
-import Footer from '../Footer';
 import Quiz from '../Quiz';
 
-const HairLossPage = () => {
+const HairLossPage = ({ questions }) => {
   const [showQuiz, setShowQuiz] = useState(false);
 
   const handleTakeQuiz = () => {
@@ -12,13 +11,19 @@ const HairLossPage = () => {
   };
 
   if (showQuiz) {
-    return <Quiz showQuiz={showQuiz} setShowQuiz={setShowQuiz} />;
+    return (
+      <Quiz
+        showQuiz={showQuiz}
+        setShowQuiz={setShowQuiz}
+        questions={questions}
+      />
+    );
   }
 
   return (
-    <div className={style.main}>
+    <div className={styles.main}>
       <main>
-        <section className={style['hero-section']}>
+        <section className={styles['hero-section']}>
           <div>
             <Image
               alt='app logo'
@@ -28,23 +33,23 @@ const HairLossPage = () => {
             />
           </div>
 
-          <div className={style['head-text']}>
+          <div className={styles['head-text']}>
             <h1>Be good to yourself</h1>
-            <p className={style['hero-paragraph']}>
+            <p className={styles['hero-paragraph']}>
               We’re working around the clock to bring you a holistic approach to
               your wellness. From top to bottom, inside and out.
             </p>
-            <button onClick={handleTakeQuiz} className={style.btn}>
+            <button onClick={handleTakeQuiz} className={styles.btn}>
               TAKE THE QUIZ
             </button>
           </div>
         </section>
 
-        <section className={style['help-section']}>
+        <section className={styles['help-section']}>
           <h2>What can we help with?</h2>
 
-          <div className={style['help-item']}>
-            <div className={style['help-item-image']}>
+          <div className={styles['help-item']}>
+            <div className={styles['help-item-image']}>
               <Image
                 alt='person with hair loss'
                 src='/images/person1.png'
@@ -52,20 +57,20 @@ const HairLossPage = () => {
                 height='445px'
               />
             </div>
-            <div className={style['help-item-text']}>
-              <p className={style['help-item-title']}>Hair loss</p>
+            <div className={styles['help-item-text']}>
+              <p className={styles['help-item-title']}>Hair loss</p>
               <h3>Hair loss needn’t be irreversible. We can help! </h3>
-              <p className={style['help-item-desc']}>
+              <p className={styles['help-item-desc']}>
                 We’re working around the clock to bring you a holistic approach
                 to your wellness. From top to bottom, inside and out.
               </p>
-              <p className={style['bg-text']}>01</p>
+              <p className={styles['bg-text']}>01</p>
             </div>
           </div>
 
-          <div className={`${style['help-item']} ${style['row-reverse']}`}>
+          <div className={`${styles['help-item']} ${styles['row-reverse']}`}>
             <div
-              className={`${style['help-item-image']} ${style['image-reverse']}`}
+              className={`${styles['help-item-image']} ${styles['image-reverse']}`}
             >
               <Image
                 alt='an image showing a person'
@@ -74,23 +79,24 @@ const HairLossPage = () => {
                 height='445px'
               />
             </div>
-            <div className={style['help-item-text']}>
-              <p className={style['help-item-title']}>Erecetile dysfunction</p>
+            <div className={styles['help-item-text']}>
+              <p className={styles['help-item-title']}>Erecetile dysfunction</p>
               <h3>
                 Erections can be a tricky thing. But no need to feel down!
               </h3>
-              <p className={style['help-item-desc']}>
+              <p className={styles['help-item-desc']}>
                 We’re working around the clock to bring you a holistic approach
                 to your wellness. From top to bottom, inside and out.
               </p>
-              <p className={`${style['bg-text']} ${style['bg-text-reverse']}`}>
+              <p
+                className={`${styles['bg-text']} ${styles['bg-text-reverse']}`}
+              >
                 02
               </p>
             </div>
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };

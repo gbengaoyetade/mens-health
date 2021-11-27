@@ -1,16 +1,24 @@
 import Head from 'next/head';
 import HairLossPage from '../components/HairLossPage';
 
-const HairLoss = () => {
+const HairLoss = ({ questions }) => {
   return (
     <>
       <Head>
         <title>Hair loss</title>
         <link rel='icon' href='/images/favicon.ico' />
       </Head>
-      <HairLossPage />
+      <HairLossPage questions={questions} />
     </>
   );
 };
 
+export async function getStaticProps() {
+  console.log(process.env.QUIZ_URL);
+  let response = await fetch(process.env.QUIZ_URL);
+
+  const jsonResponse = await response.json();
+
+  return { props: jsonResponse };
+}
 export default HairLoss;

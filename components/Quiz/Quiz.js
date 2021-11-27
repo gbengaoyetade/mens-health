@@ -2,22 +2,13 @@ import { useState, useEffect } from 'react';
 import DOMPurify from 'dompurify';
 import { CSSTransition } from 'react-transition-group';
 
-import style from './quiz.module.css';
+import styles from './quiz.module.css';
 import Response from './Response';
-import { getQuestions } from '../../helpers/questions';
 
-const Quiz = ({ setShowQuiz }) => {
-  const questions = getQuestions();
+const Quiz = ({ setShowQuiz, questions }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [answers, setAnswers] = useState([]);
   const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    if (Object.keys(answers).length === questions.length) {
-      setQuizCompleted(true);
-    }
-  }, [answers]);
 
   useEffect(() => {
     setAnimate(true);
@@ -25,7 +16,8 @@ const Quiz = ({ setShowQuiz }) => {
 
   const handleOptionSelect = (value, isRejection) => {
     setAnimate(false);
-    const newAnswers = { ...answers, [questionIndex]: { value, isRejection } };
+    const newAnswers = [...answers];
+    newAnswers[questionIndex] = { value, isRejection };
     setAnswers(newAnswers);
     setNextQuestion();
   };
@@ -45,23 +37,21 @@ const Quiz = ({ setShowQuiz }) => {
 
   const getOptionClass = (value) => {
     if (answers[questionIndex]?.value === value) {
-      return `${style.option} ${style.selected}`;
+      return `${styles.option} ${styles.selected}`;
     }
-    return style.option;
+    return styles.option;
   };
 
-  if (quizCompleted) {
-    return (
-      <Response
-        quizCompleted={quizCompleted}
-        setShowQuiz={setShowQuiz}
-        answers={answers}
-      />
-    );
+  const hasRejection =
+    answers.length && answers[questionIndex - 1]?.isRejection;
+  const hasCompletedQuestion = answers.length === questions.length;
+
+  if (hasRejection || hasCompletedQuestion) {
+    return <Response setShowQuiz={setShowQuiz} hasRejection={hasRejection} />;
   }
 
   return (
-    <div className={style.wrapper}>
+    <div className={styles.wrapper}>
       <CSSTransition
         in={animate}
         timeout={500}
@@ -69,19 +59,19 @@ const Quiz = ({ setShowQuiz }) => {
         unmountOnExit
         key={questionIndex}
       >
-        <section className={style['questions-wrapper']}>
+        <section className={styles['questions-wrapper']}>
           {questionIndex > 0 && (
             <button
               data-testid='back-btn'
               onClick={handleBackButtonClick}
-              className={style.btn}
+              className={styles.btn}
             >
               &larr;
             </button>
           )}
 
-          <p className={style.question}>{questions[questionIndex].question}</p>
-          <div className={style['options-wrapper']}>
+          <p className={styles.question}>{questions[questionIndex].question}</p>
+          <div className={styles['options-wrapper']}>
             {questions[questionIndex].options.map(
               ({ display, value, isRejection }, index) => {
                 const purified = DOMPurify.sanitize(display);
