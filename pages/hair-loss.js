@@ -14,7 +14,6 @@ const HairLoss = ({ questions }) => {
 };
 
 export async function getStaticProps() {
-  console.log(process.env.QUIZ_URL);
   let response = await fetch(process.env.QUIZ_URL);
 
   const jsonResponse = await response.json();
